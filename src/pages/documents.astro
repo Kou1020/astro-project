@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const allPosts = Object.values(import.meta.glob('./posts/document/*.md', { eager: true }));
+const pageTitle = "Documents";
+---
+<BaseLayout pageTitle={pageTitle}>
+	<h2>ドキュメント</h2>
+	{allPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+
+</BaseLayout>
